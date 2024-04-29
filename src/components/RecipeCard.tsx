@@ -25,7 +25,9 @@ export const RecipeCard = ({ recipe }:{ recipe: Recipe }) => {
   );
 
   const PurchaseWithSupertab = () => (
-    <p>Unlock the recipe with Supertab!</p>
+    <p>Unlock the recipe with Supertab!
+      <div id="purchase-button-container"></div>
+    </p>
   );
 
   return (
@@ -33,6 +35,7 @@ export const RecipeCard = ({ recipe }:{ recipe: Recipe }) => {
       <h3>{recipe.name}</h3>
       <img src={recipe.image} alt={recipe.name} />
       <p>{recipe.description}</p>
+      <PurchaseWithSupertab />
       {
         isExpanded
         ? hasPermission
