@@ -1,0 +1,6 @@
+# ignore ALL .log files
+node_modules
+
+/.cache
+/public/build
+/build

@@ -1,9 +1,18 @@
-import { RecipeCard } from "../components/RecipeCard"
+import { RecipeCard } from "../components/RecipeCard";
 import { useEffect, useState } from "react";
 import { api } from "../util/api";
 import { Recipe } from "../types";
 import { parseTheMealDBToRecipes } from "../util/helpers";
+import cook from "../assets/images/cook.jpg";
 import "https://js.supertab.co/v1/tab.js";
+import {
+  RecipeCardsGrid,
+  CardLink,
+  HeaderContainer,
+  HeaderBackground,
+  HeaderTitle,
+  SiteNav,
+} from "./AllRecipes.styles";
 
 interface Window {
   supertab: {
@@ -11,7 +20,7 @@ interface Window {
       containerElement: HTMLElement;
       clientId: string;
       merchantLogoUrl: string;
-      merchantName: string,
+      merchantName: string;
       // Purchase button label
       label?: string;
       // The optional offering id has to point to a single purchase offering
@@ -31,27 +40,6 @@ interface Window {
 export const AllRecipes = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
 
-useEffect(()=> {
-  (window as any).supertab?.createPurchaseButton({
-    containerElement: document.getElementById("purchase-button-container")!,
-    clientId: "client.cbe31267-317e-4ca5-bc66-aca83ce27d1d",
-    merchantLogoUrl: "https://www.resumegpt.ai/logo.svg",
-    merchantName: "Yummy recipes",
-    offeringId: "offering.a05c3fad-b9d0-440a-9331-25e3f1b3be9c",
-    onPurchaseCompleted: () => {
-      alert("Purchase completed!");
-    },
-    onPurchaseCanceled: () => {
-      alert("Purchase canceled!");
-    },
-    onError: () => {
-      alert("Purchase error!");
-    },
-  });
-},[])
-  // Optional clean-up later:
-  // destroy();
-
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
@@ -59,21 +47,37 @@ useEffect(()=> {
         const parsed = parseTheMealDBToRecipes(meals);
         setRecipes(parsed);
       } catch {
-        console.log('Failed to fetch recipes');
+        console.log("Failed to fetch recipes");
       }
-    }
+    };
     fetchRecipes();
   }, []);
 
-  return(
+  return (
     <>
-      <header className="heading">
-        All Recipes
-      </header>
-       <div id="purchase-button-container"></div>
-      <div className="grid-container">
-        {recipes?.map(r => <RecipeCard recipe={r} key={`${r.id}-card`}/>)}
-      </div>
+      <HeaderContainer>
+        <SiteNav to="/myRecipes">My recipes</SiteNav>
+        <SiteNav to="/myRecipes">Shopping list</SiteNav>
+        <SiteNav to="/myRecipes">About us</SiteNav>
+
+        <HeaderTitle>Yummy Planner</HeaderTitle>
+        <HeaderBackground src={cook} alt="kitchen" />
+      </HeaderContainer>
+      <nav>
+        {recipes.length ? (
+          <RecipeCardsGrid>
+            {recipes.map((recipe) => (
+              <CardLink key={recipe.id} to={`recipes/${recipe.id}`}>
+                <RecipeCard recipe={recipe} key={`${recipe.id}-card`} />
+              </CardLink>
+            ))}
+          </RecipeCardsGrid>
+        ) : (
+          <p>
+            <i>No Recipes available</i>
+          </p>
+        )}
+      </nav>
     </>
-  )
-}
+  );
+};

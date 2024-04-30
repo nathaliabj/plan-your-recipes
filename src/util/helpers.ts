@@ -1,6 +1,6 @@
 import { Ingredient, Recipe } from "../types";
 
-const parseTheMealDBToRecipe = (meal: any):Recipe => {
+const parseTheMealDBToRecipe = (meal: any): Recipe => {
   const parseIngredients = (meal: any) => {
     const ingredients: Ingredient[] = [];
     let isComplete = false;
@@ -17,20 +17,20 @@ const parseTheMealDBToRecipe = (meal: any):Recipe => {
       }
     }
     return ingredients;
-  }
+  };
 
   return {
     id: meal.idMeal,
     name: meal.strMeal,
-    description: meal.strInstructions.substring(0, 50) + '...',
+    description: meal.strInstructions.substring(0, 50) + "...",
     category: meal.strCategory,
     ingredients: parseIngredients(meal),
     instructions: meal.strInstructions,
     image: meal.strMealThumb,
     video: meal.strYoutube,
   };
-}
+};
 
-export const parseTheMealDBToRecipes = (meals: any[]):Recipe[] => {
+export const parseTheMealDBToRecipes = (meals: any[]): Recipe[] => {
   return meals.map(parseTheMealDBToRecipe).sort(() => Math.random() - 0.5);
-}
+};

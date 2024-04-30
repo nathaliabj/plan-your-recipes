@@ -1,3 +1,8 @@
+export type Ingredient = {
+  name: string;
+  quantity: string;
+};
+
 export type Recipe = {
   id?: string;
   name: string;
@@ -7,9 +12,4 @@ export type Recipe = {
   instructions: string;
   image?: string;
   video?: string;
-}
-
-export type Ingredient = {
-  name: string;
-  quantity: string;
-}
+};
