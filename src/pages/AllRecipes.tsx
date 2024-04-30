@@ -1,4 +1,4 @@
-import { RecipeCard } from "../components/RecipeCard";
+import RecipeCard from "../components/RecipeCard";
 import { useEffect, useState } from "react";
 import { api } from "../util/api";
 import { Recipe } from "../types";
@@ -13,29 +13,6 @@ import {
   HeaderTitle,
   SiteNav,
 } from "./AllRecipes.styles";
-
-interface Window {
-  supertab: {
-    createPurchaseButton: (params: {
-      containerElement: HTMLElement;
-      clientId: string;
-      merchantLogoUrl: string;
-      merchantName: string;
-      // Purchase button label
-      label?: string;
-      // The optional offering id has to point to a single purchase offering
-      // that is associated with the current client id.
-      // It defaults to the first single purchase offering id.
-      offeringId?: string;
-      // Language to use for UI copy
-      // Defaults to browser language and falls back to `en-US`
-      language?: string;
-      onPurchaseCompleted?: () => void;
-      onPurchaseCanceled?: () => void;
-      onError?: () => void;
-    }) => { destroy: () => void };
-  };
-}
 
 export const AllRecipes = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
