@@ -11,6 +11,7 @@ import {
   RecipeNavWrapper,
   HeaderTitle,
   ContentWrapper,
+  CenterText,
 } from "./Pages.styles";
 
 const About: FC = () => {
@@ -46,7 +47,9 @@ const About: FC = () => {
         </RecipeNavWrapper>
       </header>
 
-      <ContentWrapper></ContentWrapper>
+      <ContentWrapper>
+        <CenterText>Coming soon.</CenterText>
+      </ContentWrapper>
     </>
   );
 };

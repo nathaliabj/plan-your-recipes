@@ -33,7 +33,7 @@ import {
   VideoContainer,
 } from "./Pages.styles";
 
-interface RecipeProps {
+export type RecipeProps = {
   id?: string;
   name: string;
   description?: string;
@@ -42,7 +42,7 @@ interface RecipeProps {
   instructions: string;
   image?: string;
   video?: string;
-}
+};
 
 const Recipe: FC = () => {
   const [recipe, setRecipe] = useState<RecipeProps>();
@@ -73,6 +73,7 @@ const Recipe: FC = () => {
         onPurchaseCompleted: () => {
           grantPermission(id);
           setHasPermission(true);
+          localStorage.setItem("recipes", JSON.stringify(recipe));
         },
         onPurchaseCanceled: () => {
           console.log("purhcased canceled");

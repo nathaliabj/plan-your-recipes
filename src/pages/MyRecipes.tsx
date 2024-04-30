@@ -1,8 +1,11 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
+import RecipeCard from "../components/RecipeCard";
 
 import {
+  CardLink,
   NavGroup,
   NavUnderline,
+  RecipeCardsGrid,
   SiteNav,
   SiteNavWrapper,
 } from "./AllRecipes.styles";
@@ -11,9 +14,24 @@ import {
   RecipeNavWrapper,
   HeaderTitle,
   ContentWrapper,
+  CenterText,
 } from "./Pages.styles";
+import { RecipeProps } from "./Recipe";
 
 const MyRecipes: FC = () => {
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    const hasItems = localStorage.getItem("recipes") !== null;
+    const recipes =
+      hasItems && JSON.parse(localStorage.getItem("recipes") || "");
+    if (recipes) {
+      setRecipes(recipes);
+    }
+  }, []);
+
+  console.log({ recipes });
+
   return (
     <>
       <header>
@@ -46,7 +64,24 @@ const MyRecipes: FC = () => {
         </RecipeNavWrapper>
       </header>
 
-      <ContentWrapper></ContentWrapper>
+      <ContentWrapper>
+        <nav>
+          {recipes.length ? (
+            <RecipeCardsGrid>
+              {recipes.map((recipe: RecipeProps) => (
+                <CardLink key={recipe.id} to={`recipes/${recipe.id}`}>
+                  <RecipeCard recipe={recipe} key={`${recipe.id}-card`} />
+                </CardLink>
+              ))}
+            </RecipeCardsGrid>
+          ) : (
+            <CenterText>
+              You have not yet purchased any recipe, start saving your favourite
+              ones!
+            </CenterText>
+          )}
+        </nav>
+      </ContentWrapper>
     </>
   );
 };

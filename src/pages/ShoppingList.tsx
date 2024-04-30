@@ -11,6 +11,7 @@ import {
   RecipeNavWrapper,
   HeaderTitle,
   ContentWrapper,
+  CenterText,
 } from "./Pages.styles";
 
 const ShoppingList: FC = () => {
@@ -46,7 +47,9 @@ const ShoppingList: FC = () => {
         </RecipeNavWrapper>
       </header>
 
-      <ContentWrapper></ContentWrapper>
+      <ContentWrapper>
+        <CenterText>You don't have any items on your shopping list.</CenterText>
+      </ContentWrapper>
     </>
   );
 };
