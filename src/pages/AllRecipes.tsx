@@ -58,7 +58,7 @@ export const AllRecipes = () => {
       <HeaderContainer>
         <SiteNav to="/myRecipes">My recipes</SiteNav>
         <SiteNav to="/myRecipes">Shopping list</SiteNav>
-        <SiteNav to="/myRecipes">About us</SiteNav>
+        {/* <SiteNav to="/myRecipes">About us</SiteNav> */}
 
         <HeaderTitle>Yummy Planner</HeaderTitle>
         <HeaderBackground src={cook} alt="kitchen" />
