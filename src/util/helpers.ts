@@ -34,3 +34,12 @@ const parseTheMealDBToRecipe = (meal: any): Recipe => {
 export const parseTheMealDBToRecipes = (meals: any[]): Recipe[] => {
   return meals.map(parseTheMealDBToRecipe).sort(() => Math.random() - 0.5);
 };
+
+export const isPermissionGranted = (recipeId?: string): boolean => {
+  return recipeId ? localStorage.getItem(recipeId) === "granted" : false;
+};
+
+export const grantPermission = (recipeId?: string): void => {
+  if (!recipeId) return;
+  localStorage.setItem(recipeId, "granted");
+};
