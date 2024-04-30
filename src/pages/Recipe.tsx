@@ -31,7 +31,7 @@ import {
   RecipeImg,
   Content,
   VideoContainer,
-} from "./Recipe.styles";
+} from "./Pages.styles";
 
 interface RecipeProps {
   id?: string;
