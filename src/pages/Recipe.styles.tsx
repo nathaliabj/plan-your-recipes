@@ -7,12 +7,13 @@ export const RecipeHeaderBackground = styled.img`
 `;
 
 export const RecipeBodyContainer = styled.div`
-  padding: 30px;
-  max-width: 700px;
+  max-width: 1200px;
+  margin: 80px auto 60px;
 `;
 
 export const NoPermissionContainer = styled.div`
-  padding: 50px 30px 30px;
+  max-width: 1200px;
+  margin: 80px auto 60px;
   text-align: left;
 `
 
@@ -22,4 +23,9 @@ export const CenterText = styled.p`
 
 export const BluredLi = styled.li<{ blurStr: number; }>`
   filter: blur(${props => props.blurStr}px);
+`
+
+export const SupertabButton = styled.div`
+  width: 300px;
+  margin: auto;
 `

@@ -4,7 +4,7 @@ import { Ingredient } from "../types";
 import { api } from "../util/api";
 import { grantPermission, isPermissionGranted, parseTheMealDBToRecipes } from "../util/helpers";
 import { HeaderBackground, HeaderContainer, HeaderTitle } from "./AllRecipes.styles";
-import { BluredLi, CenterText, NoPermissionContainer, RecipeBodyContainer, RecipeHeaderBackground } from "./Recipe.styles";
+import { BluredLi, CenterText, NoPermissionContainer, RecipeBodyContainer, RecipeHeaderBackground, SupertabButton } from "./Recipe.styles";
 import cook from "../assets/images/cook.jpg";
 interface RecipeProps {
   id?: string;
@@ -58,7 +58,7 @@ const Recipe: FC = () => {
     }, [recipe]);
   
   if (!recipe) {
-    return <p>Loading...</p>;
+    return <NoPermissionContainer>Loading...</NoPermissionContainer>;
   }
 
   return (
@@ -100,7 +100,7 @@ const Recipe: FC = () => {
               You don't have this recipe yet! Please purchase to discover
               a new magical flavor by clicking the button below.
             </CenterText>
-            <div id="purchase-button-container"/>
+            <SupertabButton id="purchase-button-container" />
           </NoPermissionContainer>
         }
     </>
