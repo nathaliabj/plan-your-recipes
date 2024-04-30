@@ -105,3 +105,8 @@ export const RecipeImg = styled.img`
 export const Content = styled.div`
   margin-bottom: 80px;
 `;
+
+export const VideoContainer = styled.div`
+  margin: 60px auto;
+  width: fit-content;
+`;

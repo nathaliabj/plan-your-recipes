@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import YouTube from "react-youtube";
 import Label from "../components/Label";
 import { Ingredient } from "../types";
 import { api } from "../util/api";
@@ -29,6 +30,7 @@ import {
   ContentWrapper,
   RecipeImg,
   Content,
+  VideoContainer,
 } from "./Recipe.styles";
 
 interface RecipeProps {
@@ -125,17 +127,26 @@ const Recipe: FC = () => {
         </RecipeTitleWrapper>
         {hasPermission ? (
           <RecipeBodyContainer>
-            {recipe.category && <Label>{recipe.category}</Label>}
-            <h2>Ingredients</h2>
-            <ul>
-              {recipe.ingredients.map((ingredient) => (
-                <li key={ingredient.name}>
-                  {ingredient.quantity} - {ingredient.name}
-                </li>
-              ))}
-            </ul>
-            <p>{recipe.instructions}</p>
             <RecipeImg src={recipe?.image} alt={recipe?.name} />
+            <div>
+              {recipe.category && <Label>{recipe.category}</Label>}
+              <h2>Ingredients</h2>
+              <ul>
+                {recipe.ingredients.map((ingredient) => (
+                  <li key={ingredient.name}>
+                    {ingredient.quantity} - {ingredient.name}
+                  </li>
+                ))}
+              </ul>
+              <h2>Instructions</h2>
+              <p>{recipe.instructions}</p>
+              {recipe.video && (
+                <VideoContainer>
+                  <h2>Step by step</h2>
+                  <YouTube videoId={recipe.video.split("?v=").pop()} />
+                </VideoContainer>
+              )}
+            </div>
           </RecipeBodyContainer>
         ) : (
           <NoPermissionContainer>
