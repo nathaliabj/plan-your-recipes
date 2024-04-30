@@ -1,4 +1,5 @@
 import { Recipe } from "../../types";
+import Label from "../Label";
 import {
   CardContainer,
   CardImg,
@@ -19,6 +20,7 @@ const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
           <Underline />
         </TitleWrapper>
         <CardDescription>{recipe.description}</CardDescription>
+        {recipe.category && <Label>{recipe.category}</Label>}
       </CardOverview>
     </CardContainer>
   );

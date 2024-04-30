@@ -57,7 +57,7 @@ export const AllRecipes = () => {
             </SiteNavWrapper>
 
             <SiteNavWrapper>
-              <SiteNav to="/contact-us">Contact</SiteNav>
+              <SiteNav to="/contact-us">Contact us</SiteNav>
               <NavUnderline />
             </SiteNavWrapper>
           </NavGroup>
