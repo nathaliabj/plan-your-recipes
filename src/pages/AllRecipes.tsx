@@ -12,6 +12,10 @@ import {
   HeaderBackground,
   HeaderTitle,
   SiteNav,
+  NavWrapper,
+  NavGroup,
+  SiteNavWrapper,
+  NavUnderline,
 } from "./AllRecipes.styles";
 
 export const AllRecipes = () => {
@@ -33,11 +37,31 @@ export const AllRecipes = () => {
   return (
     <>
       <HeaderContainer>
-        <SiteNav to="/myRecipes">My recipes</SiteNav>
-        <SiteNav to="/myRecipes">Shopping list</SiteNav>
-        {/* <SiteNav to="/myRecipes">About us</SiteNav> */}
-
         <HeaderTitle>Yummy Planner</HeaderTitle>
+        <NavWrapper>
+          <NavGroup>
+            <SiteNavWrapper>
+              <SiteNav to="/my-recipes">My recipes</SiteNav>
+              <NavUnderline />
+            </SiteNavWrapper>
+
+            <SiteNavWrapper>
+              <SiteNav to="/shopping-list">Shopping list</SiteNav>
+              <NavUnderline />
+            </SiteNavWrapper>
+          </NavGroup>
+          <NavGroup>
+            <SiteNavWrapper>
+              <SiteNav to="/about-us">About us</SiteNav>
+              <NavUnderline />
+            </SiteNavWrapper>
+
+            <SiteNavWrapper>
+              <SiteNav to="/contact-us">Contact</SiteNav>
+              <NavUnderline />
+            </SiteNavWrapper>
+          </NavGroup>
+        </NavWrapper>
         <HeaderBackground src={cook} alt="kitchen" />
       </HeaderContainer>
       <nav>

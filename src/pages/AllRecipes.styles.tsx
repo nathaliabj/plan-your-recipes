@@ -42,8 +42,59 @@ export const CardLink = styled(Link)`
   text-decoration: none;
 `;
 
-export const SiteNav = styled(Link)`
+export const NavWrapper = styled.nav`
   position: absolute;
-  top: 40px;
-  color: #fff;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+  bottom: -50px;
+`;
+
+export const NavGroup = styled.div`
+  display: flex;
+  gap: 50px;
+`;
+
+export const NavUnderline = styled.span`
+  position: absolute;
+  background: none;
+  opacity: 0.7;
+  top: 1.6rem;
+  left: 0;
+  height: 0.9rem;
+  width: 0;
+  z-index: 1;
+
+  transition: all 0.5s ease;
+`;
+
+export const SiteNav = styled(Link)`
+  top: 10px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 700;
+  position: relative;
+  border-bottom: 3px solid #333;
+  line-height: 1.8;
+  padding-bottom: 5px;
+  z-index: 2;
+`;
+
+export const SiteNavWrapper = styled.div`
+  position: relative;
+  display: inline;
+  width: fit-content;
+  transition: all 0.3s ease;
+
+  &:hover {
+    ${NavUnderline} {
+      width: 100%;
+      background-color: rgba(220, 179, 252, 0.7);
+    }
+    ${SiteNav} {
+      border-bottom: none;
+    }
+  }
 `;
