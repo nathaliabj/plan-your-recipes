@@ -1,6 +1,6 @@
 import { Ingredient, Recipe } from "../types";
 
-const parseTheMealDBToRecipe = (meal: any): Recipe => {
+export const parseTheMealDBToRecipe = (meal: any): Recipe => {
   const parseIngredients = (meal: any) => {
     const ingredients: Ingredient[] = [];
     let isComplete = false;
@@ -43,3 +43,7 @@ export const grantPermission = (recipeId?: string): void => {
   if (!recipeId) return;
   localStorage.setItem("recipe-" + recipeId, "granted");
 };
+
+export const getAllPermissions = (): string[] => {
+  return Object.keys(localStorage).filter((key) => key.startsWith("recipe-"));
+}

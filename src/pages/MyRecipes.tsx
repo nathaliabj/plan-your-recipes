@@ -2,6 +2,8 @@ import { FC, useEffect, useState } from "react";
 import { SecondaryNavBar } from "../components/NavBar";
 import RecipeCard from "../components/RecipeCard";
 import { Recipe } from "../types";
+import { api } from "../util/api";
+import { getAllPermissions, parseTheMealDBToRecipe } from "../util/helpers";
 
 import {
   CardLink,
@@ -16,15 +18,24 @@ const MyRecipes: FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
 
   useEffect(() => {
-    const hasItems = localStorage.getItem("recipes") !== null;
-    const recipes =
-      hasItems && JSON.parse(localStorage.getItem("recipes") || "");
-    if (recipes) {
-      setRecipes(recipes);
-    }
-  }, []);
+    const purchasedRecipes = getAllPermissions();
+    const purchasedRecipeIds = purchasedRecipes.map((id) => id.replace("recipe-", ""));
 
-  console.log({ recipes });
+    (async () => {
+      const recipes = await Promise.all(purchasedRecipeIds.map(async (id) => {
+        try {
+          const { meals } = await api.theMealDB.getRecipe(id);
+          return parseTheMealDBToRecipe(meals[0]) || null;
+        } catch {
+          console.log("Failed to fetch recipe");
+        }
+      }));
+      
+      setRecipes(recipes.filter((recipe) => !!recipe) as Recipe[]);
+      
+    })();
+
+  }, []);
 
   return (
     <>
@@ -37,7 +48,7 @@ const MyRecipes: FC = () => {
           {recipes.length ? (
             <RecipeCardsGrid>
               {recipes.map((recipe) => (
-                <CardLink key={recipe.id} to={`recipes/${recipe.id}`}>
+                <CardLink key={recipe.id} to={`/recipes/${recipe.id}`}>
                   <RecipeCard recipe={recipe} key={`${recipe.id}-card`} />
                 </CardLink>
               ))}

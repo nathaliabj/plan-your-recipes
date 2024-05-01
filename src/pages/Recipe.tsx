@@ -43,11 +43,6 @@ const RecipePage: FC = () => {
     fetchRecipe();
   }, []);
 
-  const giveFakePermission = () => {
-    grantPermission(id);
-    setHasPermission(true);
-  };
-
   useEffect(() => {
     const cow = document.getElementById("purchase-button-container");
     if (cow && cow.childElementCount === 0 && recipe) {
@@ -71,7 +66,7 @@ const RecipePage: FC = () => {
       });
     }
   }, [recipe]);
-  console.log("🎀🎀🎀🎀🎀🎀")
+
   if (!recipe) {
     return <NoPermissionContainer>Loading...</NoPermissionContainer>;
   }
@@ -142,7 +137,6 @@ const RecipePage: FC = () => {
               magical flavor by clicking the button below.
             </CenterText>
             <SupertabButton id="purchase-button-container" />
-            <button onClick={giveFakePermission}>Give me permission</button>
           </NoPermissionContainer>
         )}
       </ContentWrapper>
