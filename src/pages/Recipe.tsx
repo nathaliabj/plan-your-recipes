@@ -53,14 +53,14 @@ const RecipePage: FC = () => {
     if (cow && cow.childElementCount === 0 && recipe) {
       (window as any).supertab?.createPurchaseButton({
         containerElement: document.getElementById("purchase-button-container")!,
-        clientId: "client.cbe31267-317e-4ca5-bc66-aca83ce27d1d",
+        clientId: "client.ea57cc9a-fa24-46ab-a0cc-4b93e7ffc2ac",
         merchantLogoUrl: "https://www.resumegpt.ai/logo.svg",
         merchantName: "Yummy recipes",
-        offeringId: "offering.a05c3fad-b9d0-440a-9331-25e3f1b3be9c",
+        offeringId: "offering.a1c40152-191d-4e61-8b98-33c53b200d2d",
         onPurchaseCompleted: () => {
           grantPermission(id);
           setHasPermission(true);
-          localStorage.setItem("recipes", JSON.stringify(recipe));
+          // localStorage.setItem("recipes", JSON.stringify(recipe));
         },
         onPurchaseCanceled: () => {
           console.log("purhcased canceled");
@@ -71,7 +71,7 @@ const RecipePage: FC = () => {
       });
     }
   }, [recipe]);
-
+  console.log("🎀🎀🎀🎀🎀🎀")
   if (!recipe) {
     return <NoPermissionContainer>Loading...</NoPermissionContainer>;
   }
