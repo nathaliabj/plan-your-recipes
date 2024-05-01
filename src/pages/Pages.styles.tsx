@@ -80,7 +80,6 @@ export const CenterText = styled.p`
   text-align: center;
   font-weight: 700;
   margin: 15px auto;
-  background-color: rgba(220, 179, 252, 0.7);
   width: fit-content;
   padding: 1px 10px;
 `;

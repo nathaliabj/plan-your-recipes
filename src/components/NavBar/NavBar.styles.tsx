@@ -92,16 +92,17 @@ export const HeaderContainer = styled.header`
 
 export const MainHeaderTitle = styled.h1`
   background: #fff;
+  border: 5px solid #333;
+  bottom: -38px;
+  cursor: default;
   font-size: 38px;
+  left: 50%;
+  margin: auto;
+  margin-left: -170px;
+  padding: 12px 18px;
+  position: absolute;
   text-align: center;
   width: fit-content;
-  margin: auto;
-  padding: 12px 18px;
-  border: 5px solid #333;
-  position: absolute;
-  bottom: -38px;
-  left: 50%;
-  margin-left: -170px;
   z-index: 1;
 `;
 
