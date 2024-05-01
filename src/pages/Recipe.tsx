@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import YouTube from "react-youtube";
 import Label from "../components/Label";
 import { SecondaryNavBar } from "../components/NavBar";
+import TextHighlight from "../components/TextHighlight";
 import { Recipe } from "../types";
 import { api } from "../util/api";
 import {
@@ -24,6 +25,7 @@ import {
   Content,
   VideoContainer,
   InstructionsText,
+  Ellipsis,
 } from "./Pages.styles";
 
 const RecipePage: FC = () => {
@@ -84,10 +86,12 @@ const RecipePage: FC = () => {
         </RecipeTitleWrapper>
         {hasPermission ? (
           <RecipeBodyContainer>
-            <RecipeImg src={recipe?.image} alt={recipe?.name} />
+            <RecipeImg src={recipe?.image} alt={recipe?.name} long />
             <div>
               {recipe.category && <Label>{recipe.category}</Label>}
-              <h2>Ingredients</h2>
+              <TextHighlight height={15}>
+                <h2>Ingredients</h2>
+              </TextHighlight>
               <ul>
                 {recipe.ingredients.map((ingredient) => (
                   <li key={ingredient.name}>
@@ -95,11 +99,15 @@ const RecipePage: FC = () => {
                   </li>
                 ))}
               </ul>
-              <h2>Instructions</h2>
+              <TextHighlight height={15}>
+                <h2>Instructions</h2>
+              </TextHighlight>
               <InstructionsText>{recipe.instructions}</InstructionsText>
               {recipe.video && (
                 <VideoContainer>
-                  <h2>Step by step</h2>
+                  <TextHighlight height={15}>
+                    <h2>Step by step</h2>
+                  </TextHighlight>
                   <YouTube videoId={recipe.video.split("?v=").pop()} />
                 </VideoContainer>
               )}
@@ -111,7 +119,9 @@ const RecipePage: FC = () => {
               <RecipeImg src={recipe?.image} alt={recipe?.name} />
               <div>
                 {recipe.category && <Label>{recipe.category}</Label>}
-                <h2>Ingredients</h2>
+                <TextHighlight height={15}>
+                  <h2>Ingredients</h2>
+                </TextHighlight>
 
                 <ul>
                   {recipe.ingredients.slice(0, 6).map((ingredient, index) =>
@@ -130,6 +140,14 @@ const RecipePage: FC = () => {
                     )
                   )}
                 </ul>
+                <TextHighlight height={15}>
+                  <h2>Instructions</h2>
+                </TextHighlight>
+                <InstructionsText>
+                  {recipe.instructions.substring(0, 150)}
+                </InstructionsText>
+                <BluredLi>{recipe.instructions.substring(200, 300)}</BluredLi>
+                <Ellipsis>...</Ellipsis>
               </div>
             </Content>
             <CenterText>

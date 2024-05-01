@@ -84,8 +84,8 @@ export const CenterText = styled.p`
   padding: 1px 10px;
 `;
 
-export const BluredLi = styled.li<{ blurStr: number }>`
-  filter: blur(${(props) => props.blurStr}px);
+export const BluredLi = styled.li<{ blurStr?: number }>`
+  filter: blur(${({ blurStr }) => (blurStr ? `${blurStr}px` : "3px")});
 `;
 
 export const SupertabButton = styled.div`
@@ -93,16 +93,23 @@ export const SupertabButton = styled.div`
   margin: auto;
 `;
 
-export const RecipeImg = styled.img`
+export const Ellipsis = styled.p`
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+  margin: 20px auto 0;
+`;
+
+export const RecipeImg = styled.img<{ long?: boolean }>`
   float: right;
-  width: 300px;
-  margin-top: -50px;
+  width: ${({ long }) => (long ? "380px" : "300px")};
+  margin-top: -30px;
   border-radius: 4px;
   box-shadow: 0px 0px 6px -3px rgba(0, 0, 0, 1);
 `;
 
 export const Content = styled.div`
-  margin-bottom: 80px;
+  margin-bottom: 30px;
 `;
 
 export const VideoContainer = styled.div`
@@ -112,4 +119,4 @@ export const VideoContainer = styled.div`
 
 export const InstructionsText = styled.p`
   white-space: pre-wrap;
-`
+`;
