@@ -36,10 +36,10 @@ export const parseTheMealDBToRecipes = (meals: any[]): Recipe[] => {
 };
 
 export const isPermissionGranted = (recipeId?: string): boolean => {
-  return recipeId ? localStorage.getItem(recipeId) === "granted" : false;
+  return recipeId ? localStorage.getItem("recipe-" + recipeId) === "granted" : false;
 };
 
 export const grantPermission = (recipeId?: string): void => {
   if (!recipeId) return;
-  localStorage.setItem(recipeId, "granted");
+  localStorage.setItem("recipe-" + recipeId, "granted");
 };

@@ -2,7 +2,8 @@ import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import YouTube from "react-youtube";
 import Label from "../components/Label";
-import { Ingredient } from "../types";
+import { SecondaryNavBar } from "../components/NavBar";
+import { Recipe } from "../types";
 import { api } from "../util/api";
 import {
   grantPermission,
@@ -10,20 +11,11 @@ import {
   parseTheMealDBToRecipes,
 } from "../util/helpers";
 import {
-  NavGroup,
-  NavUnderline,
-  SiteNav,
-  SiteNavWrapper,
-} from "./AllRecipes.styles";
-import {
   BluredLi,
   CenterText,
   NoPermissionContainer,
   RecipeBodyContainer,
   SupertabButton,
-  TitleContainer,
-  RecipeNavWrapper,
-  HeaderTitle,
   RecipeTitleWrapper,
   RecipeTitle,
   TitleUnderline,
@@ -31,21 +23,11 @@ import {
   RecipeImg,
   Content,
   VideoContainer,
+  InstructionsText,
 } from "./Pages.styles";
 
-export type RecipeProps = {
-  id?: string;
-  name: string;
-  description?: string;
-  category?: string;
-  ingredients: Ingredient[];
-  instructions: string;
-  image?: string;
-  video?: string;
-};
-
-const Recipe: FC = () => {
-  const [recipe, setRecipe] = useState<RecipeProps>();
+const RecipePage: FC = () => {
+  const [recipe, setRecipe] = useState<Recipe>();
   const { id } = useParams();
   const [hasPermission, setHasPermission] = useState(isPermissionGranted(id));
 
@@ -60,6 +42,11 @@ const Recipe: FC = () => {
     };
     fetchRecipe();
   }, []);
+
+  const giveFakePermission = () => {
+    grantPermission(id);
+    setHasPermission(true);
+  };
 
   useEffect(() => {
     const cow = document.getElementById("purchase-button-container");
@@ -92,33 +79,7 @@ const Recipe: FC = () => {
   return (
     <>
       <header>
-        <RecipeNavWrapper>
-          <NavGroup>
-            <SiteNavWrapper>
-              <SiteNav to="/my-recipes">My recipes</SiteNav>
-              <NavUnderline />
-            </SiteNavWrapper>
-
-            <SiteNavWrapper>
-              <SiteNav to="/shopping-list">Shopping list</SiteNav>
-              <NavUnderline />
-            </SiteNavWrapper>
-          </NavGroup>
-          <TitleContainer to="/">
-            <HeaderTitle>Yummy planner</HeaderTitle>
-          </TitleContainer>
-          <NavGroup>
-            <SiteNavWrapper>
-              <SiteNav to="/about-us">About us</SiteNav>
-              <NavUnderline />
-            </SiteNavWrapper>
-
-            <SiteNavWrapper>
-              <SiteNav to="/contact-us">Contact us</SiteNav>
-              <NavUnderline />
-            </SiteNavWrapper>
-          </NavGroup>
-        </RecipeNavWrapper>
+        <SecondaryNavBar />
       </header>
 
       <ContentWrapper>
@@ -140,7 +101,7 @@ const Recipe: FC = () => {
                 ))}
               </ul>
               <h2>Instructions</h2>
-              <p>{recipe.instructions}</p>
+              <InstructionsText>{recipe.instructions}</InstructionsText>
               {recipe.video && (
                 <VideoContainer>
                   <h2>Step by step</h2>
@@ -181,6 +142,7 @@ const Recipe: FC = () => {
               magical flavor by clicking the button below.
             </CenterText>
             <SupertabButton id="purchase-button-container" />
+            <button onClick={giveFakePermission}>Give me permission</button>
           </NoPermissionContainer>
         )}
       </ContentWrapper>
@@ -188,4 +150,4 @@ const Recipe: FC = () => {
   );
 };
 
-export default Recipe;
+export default RecipePage;

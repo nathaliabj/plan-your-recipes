@@ -110,3 +110,7 @@ export const VideoContainer = styled.div`
   margin: 60px auto;
   width: fit-content;
 `;
+
+export const InstructionsText = styled.p`
+  white-space: pre-wrap;
+`

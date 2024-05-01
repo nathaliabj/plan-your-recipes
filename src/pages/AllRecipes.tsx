@@ -1,22 +1,14 @@
-import RecipeCard from "../components/RecipeCard";
 import { useEffect, useState } from "react";
+import RecipeCard from "../components/RecipeCard";
+import { MainNavBar } from "../components/NavBar";
 import { api } from "../util/api";
-import { Recipe } from "../types";
 import { parseTheMealDBToRecipes } from "../util/helpers";
-import cook from "../assets/images/cook.jpg";
-import "https://js.supertab.co/v1/tab.js";
+import { Recipe } from "../types";
 import {
   RecipeCardsGrid,
   CardLink,
-  HeaderContainer,
-  HeaderBackground,
-  HeaderTitle,
-  SiteNav,
-  NavWrapper,
-  NavGroup,
-  SiteNavWrapper,
-  NavUnderline,
 } from "./AllRecipes.styles";
+
 
 export const AllRecipes = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -36,34 +28,7 @@ export const AllRecipes = () => {
 
   return (
     <>
-      <HeaderContainer>
-        <HeaderTitle>Yummy Planner</HeaderTitle>
-        <NavWrapper>
-          <NavGroup>
-            <SiteNavWrapper>
-              <SiteNav to="/my-recipes">My recipes</SiteNav>
-              <NavUnderline />
-            </SiteNavWrapper>
-
-            <SiteNavWrapper>
-              <SiteNav to="/shopping-list">Shopping list</SiteNav>
-              <NavUnderline />
-            </SiteNavWrapper>
-          </NavGroup>
-          <NavGroup>
-            <SiteNavWrapper>
-              <SiteNav to="/about-us">About us</SiteNav>
-              <NavUnderline />
-            </SiteNavWrapper>
-
-            <SiteNavWrapper>
-              <SiteNav to="/contact-us">Contact us</SiteNav>
-              <NavUnderline />
-            </SiteNavWrapper>
-          </NavGroup>
-        </NavWrapper>
-        <HeaderBackground src={cook} alt="kitchen" />
-      </HeaderContainer>
+      <MainNavBar />
       <nav>
         {recipes.length ? (
           <RecipeCardsGrid>

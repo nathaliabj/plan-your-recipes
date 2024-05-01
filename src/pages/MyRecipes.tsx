@@ -1,25 +1,19 @@
 import { FC, useEffect, useState } from "react";
+import { SecondaryNavBar } from "../components/NavBar";
 import RecipeCard from "../components/RecipeCard";
+import { Recipe } from "../types";
 
 import {
   CardLink,
-  NavGroup,
-  NavUnderline,
   RecipeCardsGrid,
-  SiteNav,
-  SiteNavWrapper,
 } from "./AllRecipes.styles";
 import {
-  TitleContainer,
-  RecipeNavWrapper,
-  HeaderTitle,
   ContentWrapper,
   CenterText,
 } from "./Pages.styles";
-import { RecipeProps } from "./Recipe";
 
 const MyRecipes: FC = () => {
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
 
   useEffect(() => {
     const hasItems = localStorage.getItem("recipes") !== null;
@@ -35,40 +29,14 @@ const MyRecipes: FC = () => {
   return (
     <>
       <header>
-        <RecipeNavWrapper>
-          <NavGroup>
-            <SiteNavWrapper>
-              <SiteNav to="/my-recipes">My recipes</SiteNav>
-              <NavUnderline />
-            </SiteNavWrapper>
-
-            <SiteNavWrapper>
-              <SiteNav to="/shopping-list">Shopping list</SiteNav>
-              <NavUnderline />
-            </SiteNavWrapper>
-          </NavGroup>
-          <TitleContainer to="/">
-            <HeaderTitle>Yummy planner</HeaderTitle>
-          </TitleContainer>
-          <NavGroup>
-            <SiteNavWrapper>
-              <SiteNav to="/about-us">About us</SiteNav>
-              <NavUnderline />
-            </SiteNavWrapper>
-
-            <SiteNavWrapper>
-              <SiteNav to="/contact-us">Contact us</SiteNav>
-              <NavUnderline />
-            </SiteNavWrapper>
-          </NavGroup>
-        </RecipeNavWrapper>
+        <SecondaryNavBar />
       </header>
 
       <ContentWrapper>
         <nav>
           {recipes.length ? (
             <RecipeCardsGrid>
-              {recipes.map((recipe: RecipeProps) => (
+              {recipes.map((recipe) => (
                 <CardLink key={recipe.id} to={`recipes/${recipe.id}`}>
                   <RecipeCard recipe={recipe} key={`${recipe.id}-card`} />
                 </CardLink>
