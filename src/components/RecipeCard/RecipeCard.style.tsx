@@ -15,7 +15,7 @@ export const Underline = styled.span`
   opacity: 0.7;
   top: 0.7em;
   left: 0;
-  height: 1rem;
+  height: 0.6rem;
   width: 0;
   z-index: 1;
 
@@ -27,9 +27,9 @@ export const CardTitle = styled.a`
   position: relative;
   text-decoration: none;
   border-bottom: 3px solid #333;
-  line-height: 1.8;
+  line-height: 1.5;
   font-size: 20px;
-  padding-bottom: 8px;
+  padding-bottom: 3px;
   z-index: 2;
 `;
 
@@ -46,6 +46,7 @@ export const CardOverview = styled.div`
 `;
 
 export const CardContainer = styled.div`
+  height: 200px;
   background: #fff;
   display: grid;
   grid-template-columns: 300px 1fr;

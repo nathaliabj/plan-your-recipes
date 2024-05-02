@@ -51,7 +51,7 @@ const RecipePage: FC = () => {
       (window as any).supertab?.createPurchaseButton({
         containerElement: document.getElementById("purchase-button-container")!,
         clientId: "client.ea57cc9a-fa24-46ab-a0cc-4b93e7ffc2ac",
-        merchantLogoUrl: "https://www.resumegpt.ai/logo.svg",
+        merchantLogoUrl: "../assets/images/yummy.png",
         merchantName: "Yummy recipes",
         offeringId: "offering.a1c40152-191d-4e61-8b98-33c53b200d2d",
         onPurchaseCompleted: () => {
