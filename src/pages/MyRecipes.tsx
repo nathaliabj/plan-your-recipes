@@ -5,13 +5,13 @@ import { Recipe } from "../types";
 import { api } from "../util/api";
 import { getAllPermissions, parseTheMealDBToRecipe } from "../util/helpers";
 
-import {
-  CardLink,
-  RecipeCardsGrid,
-} from "./AllRecipes.styles";
+import { CardLink, RecipeCardsGrid } from "./AllRecipes.styles";
 import {
   ContentWrapper,
   CenterText,
+  PageTitleWrapper,
+  PageTitle,
+  TitleUnderline,
 } from "./Pages.styles";
 
 const MyRecipes: FC = () => {
@@ -19,22 +19,24 @@ const MyRecipes: FC = () => {
 
   useEffect(() => {
     const purchasedRecipes = getAllPermissions();
-    const purchasedRecipeIds = purchasedRecipes.map((id) => id.replace("recipe-", ""));
+    const purchasedRecipeIds = purchasedRecipes.map((id) =>
+      id.replace("recipe-", "")
+    );
 
     (async () => {
-      const recipes = await Promise.all(purchasedRecipeIds.map(async (id) => {
-        try {
-          const { meals } = await api.theMealDB.getRecipe(id);
-          return parseTheMealDBToRecipe(meals[0]) || null;
-        } catch {
-          console.log("Failed to fetch recipe");
-        }
-      }));
-      
-      setRecipes(recipes.filter((recipe) => !!recipe) as Recipe[]);
-      
-    })();
+      const recipes = await Promise.all(
+        purchasedRecipeIds.map(async (id) => {
+          try {
+            const { meals } = await api.theMealDB.getRecipe(id);
+            return parseTheMealDBToRecipe(meals[0]) || null;
+          } catch {
+            console.log("Failed to fetch recipe");
+          }
+        })
+      );
 
+      setRecipes(recipes.filter((recipe) => !!recipe) as Recipe[]);
+    })();
   }, []);
 
   return (
@@ -47,6 +49,10 @@ const MyRecipes: FC = () => {
         <nav>
           {recipes.length ? (
             <RecipeCardsGrid>
+              <PageTitleWrapper>
+                <PageTitle>Your saved recipes</PageTitle>
+                <TitleUnderline />
+              </PageTitleWrapper>
               {recipes.map((recipe) => (
                 <CardLink key={recipe.id} to={`/recipes/${recipe.id}`}>
                   <RecipeCard recipe={recipe} key={`${recipe.id}-card`} />

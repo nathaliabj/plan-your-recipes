@@ -4,11 +4,7 @@ import { MainNavBar } from "../components/NavBar";
 import { api } from "../util/api";
 import { parseTheMealDBToRecipes } from "../util/helpers";
 import { Recipe } from "../types";
-import {
-  RecipeCardsGrid,
-  CardLink,
-} from "./AllRecipes.styles";
-
+import { RecipeCardsGrid, CardLink } from "./AllRecipes.styles";
 
 export const AllRecipes = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -32,7 +28,7 @@ export const AllRecipes = () => {
       <nav>
         {recipes.length ? (
           <RecipeCardsGrid>
-            {recipes.map((recipe) => (
+            {recipes.slice(0, 4).map((recipe) => (
               <CardLink key={recipe.id} to={`recipes/${recipe.id}`}>
                 <RecipeCard recipe={recipe} key={`${recipe.id}-card`} />
               </CardLink>

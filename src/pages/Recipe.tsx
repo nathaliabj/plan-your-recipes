@@ -17,8 +17,8 @@ import {
   NoPermissionContainer,
   RecipeBodyContainer,
   SupertabButton,
-  RecipeTitleWrapper,
-  RecipeTitle,
+  PageTitleWrapper,
+  PageTitle,
   TitleUnderline,
   ContentWrapper,
   RecipeImg,
@@ -80,10 +80,10 @@ const RecipePage: FC = () => {
       </header>
 
       <ContentWrapper>
-        <RecipeTitleWrapper>
-          <RecipeTitle>{recipe.name}</RecipeTitle>
+        <PageTitleWrapper>
+          <PageTitle>{recipe.name}</PageTitle>
           <TitleUnderline />
-        </RecipeTitleWrapper>
+        </PageTitleWrapper>
         {hasPermission ? (
           <RecipeBodyContainer>
             <RecipeImg src={recipe?.image} alt={recipe?.name} long />

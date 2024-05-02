@@ -33,14 +33,14 @@ export const RecipeNavWrapper = styled.nav`
   gap: 20px;
 `;
 
-export const RecipeTitleWrapper = styled.div`
+export const PageTitleWrapper = styled.div`
   position: relative;
   display: inline;
   width: fit-content;
   transition: all 0.3s ease;
 `;
 
-export const RecipeTitle = styled.h2`
+export const PageTitle = styled.h2`
   position: relative;
   top: 10px;
   font-size: 40px;
@@ -103,7 +103,7 @@ export const Ellipsis = styled.p`
 export const RecipeImg = styled.img<{ long?: boolean }>`
   float: right;
   width: ${({ long }) => (long ? "380px" : "300px")};
-  margin-top: -30px;
+  margin-top: ${({ long }) => (long ? "-30px" : "-40px")};
   border-radius: 4px;
   box-shadow: 0px 0px 6px -3px rgba(0, 0, 0, 1);
 `;
@@ -131,14 +131,13 @@ export const SubmitFormButton = styled.button`
   cursor: pointer;
 `;
 
-
 export const FormInput = styled.input`
   margin-top: 8px;
   margin-bottom: 16px;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
-`
+`;
 
 export const FormTextArea = styled.textarea`
   margin-top: 8px;
@@ -147,16 +146,70 @@ export const FormTextArea = styled.textarea`
   border-radius: 5px;
   border: 1px solid #ccc;
   height: 200px;
-`
+`;
 
 export const FormLabel = styled.label`
   display: flex;
   flex-direction: column;
   margin-bottom: 8px;
   font-weight: 700;
-`
+`;
 
 export const FormWrapper = styled.form`
   margin: 30px 0;
   width: 300px;
-`
+`;
+export const ShoppingListWrapper = styled.div`
+  max-width: 600px;
+  margin: 60px auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 800px;
+`;
+export const ListWrapper = styled.div`
+  padding: 8px 5px;
+  display: flex;
+  gap: 5px;
+`;
+
+export const ListLabel = styled.label``;
+
+export const CheckBox = styled.input`
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+
+  display: grid;
+  place-content: center;
+
+  &::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em #dcb3fc;
+  }
+
+  &:checked::before {
+    transform: scale(1);
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:checked + ${ListLabel} {
+    text-decoration: line-through;
+    color: #9e94a6;
+  }
+`;
