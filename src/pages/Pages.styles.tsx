@@ -213,3 +213,9 @@ export const CheckBox = styled.input`
     color: #9e94a6;
   }
 `;
+
+export const EmptyState = styled.p`
+  text-align: center;
+  font-weight: 700;
+  margin: 200px auto;
+`;

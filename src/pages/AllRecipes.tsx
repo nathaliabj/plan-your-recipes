@@ -5,6 +5,7 @@ import { api } from "../util/api";
 import { parseTheMealDBToRecipes } from "../util/helpers";
 import { Recipe } from "../types";
 import { RecipeCardsGrid, CardLink } from "./AllRecipes.styles";
+import { CenterText, EmptyState } from "./Pages.styles";
 
 export const AllRecipes = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -25,21 +26,19 @@ export const AllRecipes = () => {
   return (
     <>
       <MainNavBar />
-      <nav>
-        {recipes.length ? (
+      {recipes.length ? (
+        <nav>
           <RecipeCardsGrid>
-            {recipes.slice(0, 4).map((recipe) => (
+            {recipes.map((recipe) => (
               <CardLink key={recipe.id} to={`recipes/${recipe.id}`}>
                 <RecipeCard recipe={recipe} key={`${recipe.id}-card`} />
               </CardLink>
             ))}
           </RecipeCardsGrid>
-        ) : (
-          <p>
-            <i>No Recipes available</i>
-          </p>
-        )}
-      </nav>
+        </nav>
+      ) : (
+        <EmptyState>No Recipes available...</EmptyState>
+      )}
     </>
   );
 };
