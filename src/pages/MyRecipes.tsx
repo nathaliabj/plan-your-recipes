@@ -47,12 +47,12 @@ const MyRecipes: FC = () => {
 
       <ContentWrapper>
         <nav>
+          <PageTitleWrapper>
+            <PageTitle>Your saved recipes</PageTitle>
+            <TitleUnderline />
+          </PageTitleWrapper>
           {recipes.length ? (
             <RecipeCardsGrid>
-              <PageTitleWrapper>
-                <PageTitle>Your saved recipes</PageTitle>
-                <TitleUnderline />
-              </PageTitleWrapper>
               {recipes.map((recipe) => (
                 <CardLink key={recipe.id} to={`/recipes/${recipe.id}`}>
                   <RecipeCard recipe={recipe} key={`${recipe.id}-card`} />
