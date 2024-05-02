@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const TitleContainer = styled(Link)`
   text-decoration: none;
+  margin-right: 35px;
 `;
 
 export const NavGroup = styled.div`
@@ -98,7 +99,7 @@ export const MainHeaderTitle = styled.h1`
   font-size: 38px;
   left: 50%;
   margin: auto;
-  margin-left: -170px;
+  margin-left: -160px;
   padding: 12px 18px;
   position: absolute;
   text-align: center;
