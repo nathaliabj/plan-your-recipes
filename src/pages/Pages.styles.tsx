@@ -20,7 +20,7 @@ export const HeaderTitle = styled.h1`
 
 export const ContentWrapper = styled.div`
   width: 1200px;
-  margin: 30px auto;
+  margin: 30px auto 100px;
 `;
 
 export const RecipeNavWrapper = styled.nav`
@@ -120,3 +120,43 @@ export const VideoContainer = styled.div`
 export const InstructionsText = styled.p`
   white-space: pre-wrap;
 `;
+
+export const SubmitFormButton = styled.button`
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(220, 179, 252, 0.7);
+  color: #333333;
+  cursor: pointer;
+`;
+
+
+export const FormInput = styled.input`
+  margin-top: 8px;
+  margin-bottom: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+`
+
+export const FormTextArea = styled.textarea`
+  margin-top: 8px;
+  margin-bottom: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  height: 200px;
+`
+
+export const FormLabel = styled.label`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+  font-weight: 700;
+`
+
+export const FormWrapper = styled.form`
+  margin: 30px 0;
+  width: 300px;
+`
