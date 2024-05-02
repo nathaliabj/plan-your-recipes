@@ -65,7 +65,7 @@ export const TitleUnderline = styled.span`
   transition: all 0.5s ease;
 `;
 
-export const RecipeBodyContainer = styled.div`
+export const BodyContainer = styled.div`
   max-width: 865px;
   margin: 80px auto 60px;
 `;
@@ -156,8 +156,8 @@ export const FormLabel = styled.label`
 `;
 
 export const FormWrapper = styled.form`
-  margin: 30px 0;
-  width: 300px;
+  margin: 30px auto;
+  width: 400px;
 `;
 export const ShoppingListWrapper = styled.div`
   max-width: 600px;

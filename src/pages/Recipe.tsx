@@ -15,7 +15,7 @@ import {
   BluredLi,
   CenterText,
   NoPermissionContainer,
-  RecipeBodyContainer,
+  BodyContainer,
   SupertabButton,
   PageTitleWrapper,
   PageTitle,
@@ -85,7 +85,7 @@ const RecipePage: FC = () => {
           <TitleUnderline />
         </PageTitleWrapper>
         {hasPermission ? (
-          <RecipeBodyContainer>
+          <BodyContainer>
             <RecipeImg src={recipe?.image} alt={recipe?.name} long />
             <div>
               {recipe.category && <Label>{recipe.category}</Label>}
@@ -112,7 +112,7 @@ const RecipePage: FC = () => {
                 </VideoContainer>
               )}
             </div>
-          </RecipeBodyContainer>
+          </BodyContainer>
         ) : (
           <NoPermissionContainer>
             <Content>
