@@ -170,6 +170,7 @@ export const ShoppingListWrapper = styled.div`
 export const ListWrapper = styled.div`
   padding: 8px 5px;
   display: flex;
+  align-items: center;
   gap: 5px;
 `;
 

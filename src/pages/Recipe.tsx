@@ -6,7 +6,7 @@ import { SecondaryNavBar } from "../components/NavBar";
 import TextHighlight from "../components/TextHighlight";
 import { Recipe } from "../types";
 import { api } from "../util/api";
-import yummy from "../assets/images/yummy.png";
+import yummy from "../assets/images/yummy.svg";
 import {
   grantPermission,
   isPermissionGranted,
