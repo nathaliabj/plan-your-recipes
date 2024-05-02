@@ -5,7 +5,7 @@ import { api } from "../util/api";
 import { parseTheMealDBToRecipes } from "../util/helpers";
 import { Recipe } from "../types";
 import { RecipeCardsGrid, CardLink } from "./AllRecipes.styles";
-import { CenterText, EmptyState } from "./Pages.styles";
+import { EmptyState } from "./Pages.styles";
 
 export const AllRecipes = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
